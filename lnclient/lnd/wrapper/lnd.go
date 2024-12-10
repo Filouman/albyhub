@@ -50,7 +50,7 @@ func NewLNDclient(lndOptions LNDoptions) (result *LNDWrapper, err error) {
 		creds = credentials.NewClientTLSFromCert(cp, "")
 		// if a path to a cert file is provided
 	} else {
-		creds = credentials.NewTLS(&tls.Config{})
+		creds = credentials.NewTLS(&tls.Config{InsecureSkipVerify: true})
 	}
 	opts := []grpc.DialOption{
 		grpc.WithTransportCredentials(creds),
